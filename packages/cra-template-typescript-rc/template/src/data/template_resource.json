@@ -1,0 +1,349 @@
+[
+  {
+    "templateName": "Diagnosis_Or_Indication",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Diagnosis_Or_Indication_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/DIAGNOSIS_CODES_lookup",
+            "lookupKeyCol": "CONDITIONCATEGORYTYPE",
+            "hiddenFields": [],
+            "domainProperty": "diagnosis_or_indication_type"
+          },
+          {
+            "domainProperty": "patient_diagnosis_info",
+            "selectedValues": [
+              "common/DIAGNOSIS_CODES_lookup"
+            ]
+          }
+        ]
+      },
+      {
+        "visible": false,
+        "cmName": "pa_01_ws_Diagnosis_Or_Indication_m1",
+        "dcName": "All_Other",
+        "parent_nodes": [
+          ""
+        ],
+        "configuration": [
+          {
+            "domainProperty": "is_other",
+            "selectedValues": [
+              "1"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Currently_On_Therapy_For_Diagnosis",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Currently_On_Therapy_For_Diagnosis_m2",
+        "configuration": [
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "ALL_DRUGNAME",
+            "hiddenFields": [],
+            "domainProperty": "therapy_agent"
+          },
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "DIAGNOSIS_OR_INDICATION_CATEGORY",
+            "hiddenFields": [],
+            "domainProperty": "diagnosis_or_indication_category"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Currently_On_Therapy",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Currently_On_Therapy_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "ALL_DRUGNAME",
+            "hiddenFields": [],
+            "domainProperty": "therapy_agent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Age_Requirement",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Age_Requirement_m1",
+        "configuration": [
+          {
+            "domainProperty": "min_age"
+          },
+          {
+            "domainProperty": "max_age"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Requested_Drug",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Requested_Drug_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/PATIENT_REQUESTED_DRUG_lookup",
+            "lookupKeyCol": "DRUGNAME",
+            "hiddenFields": [],
+            "domainProperty": "requested_drugname"
+          },
+          {
+            "asConcept" : true,
+            "dcNamePrefix" : "All_Others_Requested_Drug" ,
+            "domainProperty": "is_other",
+            "selectedValues": [ "1" ]
+          },
+          {
+            "domainProperty": "requested_drugname_info",
+            "selectedValues": [
+              "common/PATIENT_REQUESTED_DRUG_lookup"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Provider_Specialty",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Provider_Specialty_m3",
+        "configuration": [
+          {
+            "lookupURI": "common/PRESCRIBER_SPECIALTY_lookup",
+            "lookupKeyCol": "SPECIALTYCATEGORY",
+            "hiddenFields": [],
+            "domainProperty": "provider_specialty_type"
+          },
+          {
+            "domainProperty": "prescriber_specialty_info",
+            "selectedValues": [
+              "common/PRESCRIBER_SPECIALTY_lookup"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Previous_Diagnostic_Procedure",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Previous_Diagnostic_Procedure_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/diagnostic_procedure_lookup",
+            "lookupKeyCol": "DIAGNOSTIC_PROCEDURE",
+            "hiddenFields": [],
+            "domainProperty": "diagnostic_procedure"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Combination_Therapy_With_Requested_Drug",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Combination_Therapy_With_Requested_Drug_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/PATIENT_REQUESTED_DRUG_lookup",
+            "lookupKeyCol": "DRUGNAME",
+            "hiddenFields": [],
+            "domainProperty": "combination_therapy_with_requested_drug_requested_drugname"
+          },
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "DISPLAY_NAME",
+            "hiddenFields": [],
+            "domainProperty": "combination_therapy_with_requested_drug_secondary_drugname"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Patient_Has_Symptom",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Patient_Has_Symptom_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/SYMPTOM_lookup",
+            "lookupKeyCol": "SYMPTOM",
+            "hiddenFields": [],
+            "domainProperty": "condition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Patient_Risk_Factor_Meets_Threshold",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Patient_Risk_Factor_Meets_Threshold_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/RISKFACTOR_lookup",
+            "lookupKeyCol": "RISK_FACTOR",
+            "hiddenFields": [],
+            "domainProperty": "risk_factor"
+          },
+          {
+            "lookupURI": "common/RISKFACTOR_lookup",
+            "lookupKeyCol": "RISK_THRESHOLD",
+            "hiddenFields": [],
+            "domainProperty": "risk_threshold"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Patient_Tried_Generic",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Patient_Tried_Generic_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "DISPLAY_NAME",
+            "hiddenFields": [],
+            "domainProperty": "generic_drugname"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Requested_Drug_Dosage_Incompatible_With_Generic",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Requested_Drug_Dosage_Incompatible_With_Generic_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/PATIENT_REQUESTED_DRUG_lookup",
+            "lookupKeyCol": "DRUGNAME",
+            "hiddenFields": [],
+            "domainProperty": "dosage_incompatible_with_generic_requested_drugname"
+          
+          },
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "STRENGTH",
+            "hiddenFields": [],
+            "domainProperty": "dosage_incompatible_with_generic_divisor"
+          },
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "DISPLAY_NAME",
+            "hiddenFields": [],
+            "domainProperty": "dosage_incompatible_with_generic_generic_drugname"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "On_Requested_Drug_For_Duration",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_On_Requested_Drug_For_Duration_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/PATIENT_REQUESTED_DRUG_lookup",
+            "lookupKeyCol": "DRUGNAME",
+            "hiddenFields": [],
+            "domainProperty": "requested_drugname"
+          },
+          {
+            "domainProperty": "days_duration"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Patient_Tried_Therapy_For_Diagnosis",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Patient_Tried_Therapy_For_Diagnosis_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "ALL_DRUGNAME",
+            "hiddenFields": [],
+            "domainProperty": "therapy_agent"
+          },
+          {
+            "lookupURI": "common/OTHER_AGENTS_lookup",
+            "lookupKeyCol": "DIAGNOSIS_OR_INDICATION_CATEGORY",
+            "hiddenFields": [],
+            "domainProperty": "diagnosis_or_indication_category"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "templateName": "Provider_Specialty_Diagnosis_Confirmed",
+    "configSets": [
+      {
+        "visible": true,
+        "cmName": "pa_01_ws_Provider_Specialty_Diagnosis_Confirmed_m1",
+        "configuration": [
+          {
+            "lookupURI": "common/PRESCRIBER_SPECIALTY_lookup",
+            "lookupKeyCol": "SPECIALTYCATEGORY",
+            "hiddenFields": [],
+            "domainProperty": "provider_specialty_type"
+          },
+          {
+            "lookupURI": "common/DIAGNOSIS_CODES_lookup",
+            "lookupKeyCol": "CONDITIONCATEGORYTYPE",
+            "hiddenFields": [],
+            "domainProperty": "diagnosis_or_indication"
+          },
+          {
+            "domainProperty": "prescriber_specialty_info",
+            "selectedValues": [
+              "common/PRESCRIBER_SPECIALTY_lookup"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
