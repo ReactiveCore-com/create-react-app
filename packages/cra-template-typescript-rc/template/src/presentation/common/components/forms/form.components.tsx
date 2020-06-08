@@ -6,9 +6,7 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Slider from '@material-ui/core/Slider';
-import { getTemplateByName } from 'common/utils/dc-utils'
 import { store } from 'core/managers/state-manager';
-import { mediateUpdateTempDC } from 'mediators/update-temp-dc-requester.mediator';
 
 const styles = makeStyles(theme =>
     createStyles({
@@ -100,7 +98,6 @@ const styles = makeStyles(theme =>
 
 export const TextControl = props => {
     const classes = styles({});
-    const template = getTemplateByName(props.templateID)
     let { disabled, values } = props;
 
     const handleChange = (ev) => {
@@ -112,7 +109,7 @@ export const TextControl = props => {
             }
         ];
 
-        store.dispatch(mediateUpdateTempDC(template, tempDC));
+        //store.dispatch(mediateUpdateTempDC(template, tempDC));
     };
 
     return (
@@ -127,7 +124,6 @@ export const SelectControl = props => {
     const { disabled, values } = props;
     const classes = styles({});
     const [selectedItems, setSelectedItems] = React.useState(values || []);
-    const template = getTemplateByName(props.templateID)
     // updating to use as a key TemplateName + domainName of the dcm since we can have multiple dcm per template
     const handleChange = ev => {
         ev.stopPropagation();
@@ -138,7 +134,7 @@ export const SelectControl = props => {
                 values
             }
         ];
-        store.dispatch(mediateUpdateTempDC(template, tempDC));
+        //store.dispatch(mediateUpdateTempDC(template, tempDC));
         setSelectedItems(ev.target.value);
     };
     let selectItems = props.selectItems.map(item => {
@@ -175,7 +171,6 @@ export const RangeControl = props => {
     const classes = styles({});
     const [value, setValue] = React.useState(0)
     const [alignment, setAlignment] = React.useState("");
-    const template = getTemplateByName(props.templateID);
 
     const handleRangeValChanged = (evt, val) => {
         setValue(val);
@@ -186,7 +181,7 @@ export const RangeControl = props => {
                 values
             }
         ];
-        store.dispatch(mediateUpdateTempDC(template, tempDC));
+        //store.dispatch(mediateUpdateTempDC(template, tempDC));
     };
 
     let marks = [
@@ -223,7 +218,6 @@ export const RangeControl = props => {
 export const ToggleControl = (props) => {
     const classes = styles({});
     const [alignment, setAlignment] = React.useState("");
-    const template = getTemplateByName(props.templateID);
     
     const handleToggle = (event, val ) => {
         setAlignment(val);
@@ -234,7 +228,7 @@ export const ToggleControl = (props) => {
                 values 
             }
         ];
-        store.dispatch(mediateUpdateTempDC(template, tempDC));
+        //store.dispatch(mediateUpdateTempDC(template, tempDC));
     }
 
     return (

@@ -1,6 +1,5 @@
 import { createMuiTheme } from '@material-ui/core';
-import 'common/themes/themes.d'
-import { categoryProvider } from './category.provider';
+import 'presentation/common/themes/themes.d'
 
 export const Rounded = theme => {
     createMuiTheme({
@@ -12,15 +11,6 @@ export const Rounded = theme => {
 }
 
 export const RCTheme = createMuiTheme({
-    //TODO: figure out how to do this
-    //palette : {
-    //    patient : {
-    //        main : categoryProvider('patient').color
-    //    },
-    //    drug : {
-    //        main : categoryProvider('drug').color
-    //    }
-    //},
     typography: {
         h1: {
             lineHeight: '30px',
@@ -99,39 +89,6 @@ export const RCTheme = createMuiTheme({
                 color: '#666666',
             }
         },
-        MuiSvgIcon : {
-            root : {
-                '&.drug' : {
-                    fill : categoryProvider('drug').color
-                },
-                '&.medical' : {
-                    fill : categoryProvider('medical').color
-                },
-                '&.patient' : {
-                    fill : categoryProvider('patient').color
-                },
-                '&.provider' : {
-                    fill : categoryProvider('provider').color
-                }
-            }
-        },
-        //TODO: figure out how to do this from html or body element
-        MuiContainer : {
-            root : {
-                '& svg.drug' : {
-                    fill : categoryProvider('drug').color
-                },
-                '& svg.medical' : {
-                    fill : categoryProvider('medical').color
-                },
-                '& svg.patient' : {
-                    fill : categoryProvider('patient').color
-                },
-                '& svg.provider' : {
-                    fill : categoryProvider('provider').color
-                }
-            }
-        },
         MuiTextField : {
             root : {
                 '&.DCTextField' : {
@@ -149,19 +106,7 @@ export const RCTheme = createMuiTheme({
                         '&:focus' : {
                             borderRadius: 5
                         }
-                    },
-                    '&.drug' :{
-                        borderColor : categoryProvider('drug').color
-                    },
-                    '&.patient' :{
-                        borderColor : categoryProvider('patient').color
-                    },
-                    '&.medical' :{
-                        borderColor : categoryProvider('medical').color
-                    },
-                    '&.provider' :{
-                        borderColor : categoryProvider('provider').color
-                    },
+                    }
                 }
             }
         },
@@ -181,20 +126,6 @@ export const RCTheme = createMuiTheme({
                 '&.form-label' : {
                     paddingBottom : '15px'
                 }
-            },
-            root : {
-                '&.drug' :{
-                    color : categoryProvider('drug').color
-                },
-                '&.patient' :{
-                    color : categoryProvider('patient').color
-                },
-                '&.medical' :{
-                    color : categoryProvider('medical').color
-                },
-                '&.provider' :{
-                    color : categoryProvider('provider').color
-                },
             }
         },
         MuiSelect : {
@@ -272,41 +203,6 @@ export const RCTheme = createMuiTheme({
                 color: "black"                
               },
             }
-        },
-        MuiTabs: {
-            indicator: {
-                '.drug &' :{
-                    backgroundColor : categoryProvider('drug').color
-                },
-                '.patient &' :{
-                    backgroundColor : categoryProvider('patient').color
-                },
-                '.medical &' :{
-                    backgroundColor : categoryProvider('medical').color
-                },
-                '.provider &' :{
-                    backgroundColor : categoryProvider('provider').color
-                },
-            }
-        },
-        MuiTab: {
-            wrapper: {
-                color: 'rgba(51, 51, 51, 0.25)',
-                '.Mui-selected &': {
-                    '.drug &' :{
-                        color : categoryProvider('drug').color
-                    },
-                    '.patient &' :{
-                        color : categoryProvider('patient').color
-                    },
-                    '.medical &' :{
-                        color : categoryProvider('medical').color
-                    },
-                    '.provider &' :{
-                        color : categoryProvider('provider').color
-                    },
-                }
-            }
         }
     }
 });
@@ -326,21 +222,6 @@ export const searchBarTheme = (theme) => {
             ...theme.overrides,
             MuiAutocomplete : {
                 ...theme.overrides.MuiAutocomplete,
-                //TODO: figure out how to do this from html or body element
-                popper : {
-                    '& svg.drug' : {
-                        fill : categoryProvider('drug').color
-                    },
-                    '& svg.medical' : {
-                        fill : categoryProvider('medical').color
-                    },
-                    '& svg.patient' : {
-                        fill : categoryProvider('patient').color
-                    },
-                    '& svg.provider' : {
-                        fill : categoryProvider('provider').color
-                    }
-                },
                 input : {
                     ...theme.overrides.MuiAutocomplete.input,
                     height : '58px',

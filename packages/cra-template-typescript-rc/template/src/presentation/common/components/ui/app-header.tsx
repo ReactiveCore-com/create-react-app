@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme =>
         header: {
             width: '100%',
             height: '75px',
-            minWidth: '1475px',
             color: 'white',
             backgroundColor: 'white',
         },
@@ -42,7 +41,6 @@ const AppHeader = (props) => {
     const history = useHistory();
     const location = useLocation();
     const classes = useStyles({});
-    const inGuideline = location.pathname.startsWith('/guideline/') || location.pathname.startsWith('/decision-visualiser/')
 
     useEffect(() => {
         const unsubscribe = store.subscribe(() => {
@@ -87,16 +85,13 @@ const AppHeader = (props) => {
                 flexWrap="nowrap"
                 alignItems="center"
                 alignContent="center"
-                justifyContent="center"
-            >
-                {inGuideline &&
+                justifyContent="center" >
                     <Breadcrumbs aria-label="breadcrumb">
-                        <Link className={classes.link} component='button' onClick={goToGuidelineManagerClick}>
-                            Decision Flow Library
+                        <Link className={classes.link} component='button'>
+                            Reactive Core
                         </Link>
-                        <Typography variant='h3'>{`${guideline.name} V${guideline.version}`}</Typography>
+                        <Typography variant='h3'>Link</Typography>
                     </Breadcrumbs>
-                }
             </Box>
             <Box
                 display="flex"

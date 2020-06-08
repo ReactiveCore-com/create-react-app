@@ -1,3 +1,13 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+  background: #F7F7F7;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +46,7 @@
     transform: rotate(360deg);
   }
 }
+//data grid sass var overrides
+$header-background-color : white;
+@import "../node_modules/@ag-grid-community/core/dist/styles/ag-grid.scss";
+@import "../node_modules/@ag-grid-community/core/dist/styles/ag-theme-balham/sass/ag-theme-balham.scss";

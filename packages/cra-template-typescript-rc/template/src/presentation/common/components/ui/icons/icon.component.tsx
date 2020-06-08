@@ -1,5 +1,5 @@
 import React from 'react';
-import { SvgIcon, Icon } from '@material-ui/core';
+import { SvgIcon } from '@material-ui/core';
 import { iconProvider } from './icon.provider';
 
 export const IconComponent = props => {

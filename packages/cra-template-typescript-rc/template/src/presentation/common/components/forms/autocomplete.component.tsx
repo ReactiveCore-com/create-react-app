@@ -6,7 +6,6 @@ import { store } from 'core/managers/state-manager';
 import { flatten, reject, map } from 'core/utils/list-utils';
 import { isNil, prop } from 'core/utils/object-utils';
 import { pipe } from 'core/utils/func-utils';
-import { mediateUpdateTempDC } from 'mediators/update-temp-dc-requester.mediator';
 
 const styles = makeStyles(theme =>
     createStyles({
@@ -55,7 +54,7 @@ export const AutocompleteControl = props => {
             }
         ];
 
-        store.dispatch(mediateUpdateTempDC(template, tempDC));
+        //store.dispatch(mediateUpdateTempDC(template, tempDC));
     };
     const { disabled, selectItems, values, multi } = props;
     const classes = styles({});

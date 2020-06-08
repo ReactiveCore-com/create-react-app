@@ -1,7 +1,6 @@
 //https://material-ui-pickers.dev/guides/css-overrides#typescript
 import { Overrides  } from '@material-ui/core/styles/overrides';
 import * as createPalette from '@material-ui/core/styles/createPalette';
-import * as Typography from '@material-ui/core/Typography';
 
 type overridesNameToClassKey = {
     MuiAutocomplete: any;

@@ -4,10 +4,9 @@ import { Box, TextField, Typography } from '@material-ui/core';
 import { store } from 'core/managers/state-manager';
 import { isValidInteger, isNumberNonNegative } from 'core/utils/validation-utils';
 import { isEmpty, isNil } from 'core/utils/object-utils';
-import { operatorMap } from 'common/constants'
+import { operatorMap } from 'presentation/common/constants'
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { getTemplateByName } from 'common/utils/dc-utils'
-import { mediateUpdateTempDC } from 'mediators/update-temp-dc-requester.mediator';
+//import { mediateUpdateTempDC } from 'mediators/update-temp-dc-requester.mediator';
 
 const styles = makeStyles(theme =>
     createStyles({
@@ -40,7 +39,6 @@ export const ThresholdControl = (props) => {
     
     const [operator, setOperator] = React.useState(!!selectedValues ? getOperatorFromValues(valueSet) : "");
     const [inputValue, setInputValue] = React.useState(!!selectedValues ? getValueFromOperator(valueSet, operator) : "0");
-    const template = getTemplateByName(props.templateID)
 
     const createRangeValues = (operator, value) => {
         let min, max;
@@ -97,7 +95,7 @@ export const ThresholdControl = (props) => {
             ...createRangeValues(val, inputValue)
         ];
 
-        store.dispatch(mediateUpdateTempDC(template, tempDC));
+        //store.dispatch(mediateUpdateTempDC(template, tempDC));
     };
 
     const handleInputChange = (evt) => {
@@ -107,7 +105,7 @@ export const ThresholdControl = (props) => {
             ...createRangeValues(operator, val)
         ];
 
-        store.dispatch(mediateUpdateTempDC(template, tempDC));
+        //store.dispatch(mediateUpdateTempDC(template, tempDC));
     };
 
     return (

@@ -1,14 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { fakeAuth } from "./auth.service";
-import { store } from 'core/managers/state-manager';
-import { createDCViewModel, createDecisionConceptTemplatesViewModels } from 'factory/viewmodel/decision-concept.factory';
-import { getDecisionConcepts, getTemplates } from 'guideline/guideline-editor/decision-concept.service';
-import { Logo, Banner } from 'common/components/ui/icons';
-import { IconComponent } from 'common/components/ui/icons/icon.component'
+import { Logo, Banner } from 'presentation/common/components/ui/icons';
+import { IconComponent } from 'presentation/common/components/ui/icons/icon.component'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { Link  } from 'react-router-dom';
 
 const styles = makeStyles(theme =>
   createStyles({
@@ -66,31 +63,6 @@ const styles = makeStyles(theme =>
 
 export const LoginComponent = props => {
   const classes = styles({});
-  const history = useHistory();
-  // we can redirect to guideline-manager only cause user should select guideline
-  //const { from } = location.state ? { from: { pathname: '/guideline-manager'} } : { from: { pathname: "/" } };
-  const { from } =  { from: { pathname: "/" } };
-  const login = () => {
-    fakeAuth.authenticate(async () => {
-      try {
-          let [templates, savedDCs] = await Promise.all([getTemplates(),getDecisionConcepts()]);
-          let dcTemplates = await createDecisionConceptTemplatesViewModels(templates);
-          store.dispatch({ type: 'setDCTemplates', payload: dcTemplates });
-          let dcs = savedDCs.map((sdc:any) => {
-              let template = dcTemplates.find((dct:any) => dct.id === sdc.dct_id);
-              return {
-                  ...createDCViewModel(template, sdc, sdc.configuration_point_values)
-              };
-          });
-          store.dispatch({ type: 'updateSavedDecisionConcepts', payload: dcs });
-          history.replace(from);
-      } catch(e) {
-        console.log('ERROR:' + e);
-        throw e;
-      }
-
-    });
-  };
 
   return (
     <div className={classes.root}>
@@ -105,7 +77,8 @@ export const LoginComponent = props => {
         <br />
         <Button
           className={ classes.DCButton }
-          onClick={ login }
+          component={ Link }
+          to="/example"
           variant="outlined"
           startIcon={<IconComponent name="login" fontSize="small" />}
         >

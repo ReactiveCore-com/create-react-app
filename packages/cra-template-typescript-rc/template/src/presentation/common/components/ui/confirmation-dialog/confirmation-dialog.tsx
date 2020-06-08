@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ReactComponentElement } from 'react';
 import { createStyles, makeStyles, Box, Typography, Button, Dialog, DialogContent } from '@material-ui/core';
-import { Warning } from 'common/components/ui/icons';
+import { Warning } from 'presentation/common/components/ui/icons';
 
 const dialogStyles = makeStyles(theme => createStyles({
     root: {

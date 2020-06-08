@@ -2,6 +2,8 @@
   "package": {
     "dependencies": {
       "@ag-grid-enterprise/all-modules": "^22.1.2",
+      "ag-grid-community": "^22.1.1",
+      "ag-grid-react": "^22.1.1",
       "@testing-library/jest-dom": "^5.5.0",
       "@testing-library/react": "^10.0.4",
       "@testing-library/user-event": "^10.1.0",
@@ -10,12 +12,25 @@
       "@types/react-dom": "^16.9.0",
       "@types/jest": "^25.0.0",
       "@types/react-material-ui-form-validator": "^2.0.5",
+      "@types/material-ui": "^0.21.7",
+      "@material-ui/core": "^4.7.2",
+      "@material-ui/icons": "^4.5.1",
+      "@material-ui/lab": "^4.0.0-alpha.37",
+      "@material-ui/pickers": "^3.2.8",
+      "react-material-ui-form-validator": "^2.0.10",
+      "react-codemirror2": "^6.0.0",
+      "react-dev-utils": "^10.0.0",
+      "react-router-dom": "^5.1.2",
+      "fuse.js": "^3.4.6",
+      "gojs": "^2.1.3",
+      "gojs-react": "^1.0.4",
       "ramda": "^0.26.1",
+      "numeral": "^2.0.6",
+      "typeface-roboto": "0.0.75",
+      "moment": "^2.24.0",
       "redux": "^4.0.5",
       "redux-thunk": "^2.3.0",
-      "typescript": "^3.8.0"
-    },
-    "devDependencies": {
+      "typescript": "^3.8.0",
       "jest-bamboo-reporter": "^1.2.1",
       "node-sass": "^4.13.1",
       "redux-logger": "^3.0.6"
