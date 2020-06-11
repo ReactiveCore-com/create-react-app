@@ -2,18 +2,20 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { updateState } from 'core/utils/state-utils';
+import { salesInfoActionMap } from 'mediator/requester/action-map';
 
-const defaultStateFactory = (state, action) => {
+const someGlobalStateFactory = (state, action) => {
     return state;
 };
 
 const combinedReducer = combineReducers({
-        //tempDecisionConcepts: updateState(tempDCActionMap),
-    });
+    salesInfo: updateState(salesInfoActionMap),
+    currentAction : (state, action) => action
+});
 
 const rootReducer = (state, action) => {
     let intermediateState = combinedReducer(state, action);
-    return defaultStateFactory(intermediateState, action);
+    return someGlobalStateFactory(intermediateState, action);
 };
 
 export const store = createStore(

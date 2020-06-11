@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import {ModuleRegistry} from '@ag-grid-community/core'; 
-import { useHistory} from 'react-router-dom';
+import { ModuleRegistry } from '@ag-grid-community/core'; 
 import { LicenseManager } from '@ag-grid-enterprise/core';
 import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
-import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
-import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
 import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 import { MenuModule } from '@ag-grid-enterprise/menu';
 import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
@@ -21,27 +16,24 @@ import { Link  } from 'react-router-dom';
 import { ROUTES } from 'presentation/common/constants';
 import * as moment from 'moment';
 import * as numeral from 'numeral';
+import { Signal } from "@robotlegsjs/signals"; 
 
-import { store } from 'core/managers/state-manager';
 import { ConfirmationDialogComponent } from 'presentation/common/components/ui/confirmation-dialog/confirmation-dialog';
 import { PageTitleComponent } from 'presentation/common/components/ui/page-title';
-import { ExampleMobileRendererComponent } from 'presentation/example/components/cell-renderer-example.component';
-import { rowData } from 'data/example-data';
+import { mediateSalesInfoDependentMediator, mediateRequestSalesInfo } from 'mediator';
 
-
-LicenseManager.setLicenseKey('CompanyName=ReactiveCore Inc,LicensedApplication=pa_mvp,LicenseType=SingleApplication,LicensedConcurrentDeveloperCount=3,LicensedProductionInstancesCount=0,AssetReference=AG-007407,ExpiryDate=18_March_2021_[v2]_MTYxNjAyNTYwMDAwMA==e0e5f9fb59722f3d697ae66bf1c6a302');
+//NOTE:make sure you have a license for your specific application
+//LicenseManager.setLicenseKey('CompanyName=ReactiveCore Inc,LicensedApplication=pa_mvp,LicenseType=SingleApplication,LicensedConcurrentDeveloperCount=3,LicensedProductionInstancesCount=0,AssetReference=AG-007407,ExpiryDate=18_March_2021_[v2]_MTYxNjAyNTYwMDAwMA==e0e5f9fb59722f3d697ae66bf1c6a302');
 
 ModuleRegistry.registerModules([
     ColumnsToolPanelModule,
-    FiltersToolPanelModule,
     RowGroupingModule,
     MenuModule,
     SetFilterModule,
-    ExcelExportModule,
-    MasterDetailModule,
     ClipboardModule,
     RangeSelectionModule
 ]);
+
 const useStyles = makeStyles(theme => createStyles({
     root : {
         width: '100%',
@@ -129,26 +121,27 @@ const createGridViewModel = () => {
                 headerName : 'Customer Phone',
                 field : 'phone'
             }
-        ],
-        rowData : [
-		...rowData
         ]
     };
 };
 
 export const ExampleGridComponent = (props) => {
-    const history = useHistory();
     const classes = useStyles({});
-    const { guideline } = store.getState();
     let gridViewModel = createGridViewModel();
-    const [rowData, setRowData] = useState(gridViewModel.rowData);
     const [confirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
-    const matches = useMediaQuery('(max-width:736px)');
-    const frameworkComponents = {
-        exampleMobilelRenderer : ExampleMobileRendererComponent,
-    };
-
+    const [rowData, setRowData] = useState([]);
     const columnDefs = [ ...gridViewModel.columnDefs ];
+
+    useEffect(() => {
+        return mediateSalesInfoDependentMediator(setRowData);
+    }, []);
+
+    useEffect(() => {
+        let requestSalesInfoDataSignal = new Signal();
+        let mediator = mediateRequestSalesInfo(requestSalesInfoDataSignal);
+        requestSalesInfoDataSignal.dispatch();
+        return mediator.destroy;
+    }, []);
 
     const handleConfirmationDialogCancel = () => {
         setConfirmationDialogOpen(false);
@@ -172,64 +165,25 @@ export const ExampleGridComponent = (props) => {
 	floatingFilter : true,
         modules : [
 	    ColumnsToolPanelModule,
-	    FiltersToolPanelModule,
 	    RowGroupingModule,
 	    MenuModule,
 	    SetFilterModule,
-            MasterDetailModule,
-            ExcelExportModule,
             ClipboardModule,
             RangeSelectionModule
 	],
-        isFullWidthCell: function(rowNode) {
-            //console.log(matches);
-            return false;
-        },
-        getRowHeight : () => {
-            return 25;
-        },
-        fullWidthCellRenderer: 'exampleMobilelRenderer',
 	enableRangeSelection : true,
         enableRangeHandle : true,
         groupMultiAutoColumn : true,
-        rowData : [],
+        rowData,
 	sideBar : 'columns',
         columnDefs,
         headerHeight : 50,
         groupDefaultExpanded : -1,
 	rowGroupPanelShow : 'always',
-        frameworkComponents,
-	//masterDetail : true,
-  	detailCellRendererParams: {
-	    detailGridOptions: {
-		columnDefs: [
-		  { field: 'callId' },
-		  { field: 'direction' },
-		  {
-		    field: 'number',
-		    minWidth: 150,
-		  },
-		  {
-		    field: 'duration', valueFormatter: "x.toLocaleString() + 's'", },
-		  {
-		    field: 'switchCode',
-		    minWidth: 150,
-		  },
-		],
-		defaultColDef: { flex: 1 },
-	    },
-	    getDetailRowData: function(params) {
-		console.log(params);
-		params.successCallback(params.data.callRecords);
-	    },
-	},
         onGridReady : (grid) => {
             grid.api.setRowData(rowData);
-            console.log(grid);
         }
     };
-
-    const [agGridOptions, _] = useState(gridOptions);
 
     return(
         <Box display="flex" flexDirection="column" width={1}>
@@ -252,7 +206,7 @@ export const ExampleGridComponent = (props) => {
 		</Box>
             </Box>
             <Box flexGrow={1} className={classes.gridEditor + ' ag-theme-balham'}>
-                <AgGridReact {...agGridOptions} />
+                <AgGridReact {...gridOptions} />
             </Box>
             <Box display="flex" justifyContent="center">
                 <Box display="flex" justifyContent="space-between" width="40%">
@@ -262,14 +216,6 @@ export const ExampleGridComponent = (props) => {
                         startIcon={<IconComponent name="print" fontSize="small" />}
                     >
                         print page
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        component={Link}
-                        to={ROUTES.EXAMPLE_TREE}
-                        startIcon={<IconComponent name="flowchart" fontSize="small" />}
-                    >
-                        view tree
                     </Button>
                     <Button
                         variant="outlined"

@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Logo, Banner } from 'presentation/common/components/ui/icons';
 import { IconComponent } from 'presentation/common/components/ui/icons/icon.component'

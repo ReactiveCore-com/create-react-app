@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Router,
     Switch,
     Route,
+    Redirect
 } from 'react-router-dom';
 import {
     createStyles,
@@ -17,9 +18,22 @@ import { LoginComponent } from 'presentation/login/login.component';
 import { ROUTES } from 'presentation/common/constants';
 import { ExampleComponent } from 'presentation/example/example.component';
 import { ExampleGridComponent } from 'presentation/example/components/grid-example.component';
-import { ExampleTreeComponent } from 'presentation/example/components/tree-example.component';
+import { mediateRequestSalesInfo } from 'mediator';
+import { Signal } from "@robotlegsjs/signals"; 
 
 const navHistory = createBrowserHistory();
+
+let requestSalesInfoDataSignal = new Signal();
+
+navHistory.listen((location, action) => {
+    switch (location.pathname) {
+        case ROUTES.EXAMPLE_GRID: 
+            requestSalesInfoDataSignal.dispatch();
+            break;
+        default:
+          break;
+      }
+});
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -59,23 +73,19 @@ const DefaultLayout = ({component: Component, ...rest }) => {
     );
 };
 
-const PrivateRoute = ({ children, ...rest }) => {
-    return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                (
-                    children
-                )
-            }
-        />
-    );
-} 
 
+//NOTE for auth gated routes
+//see https://reacttraining.com/react-router/web/example/auth-workflow
 const NavigationComponent = () => {
+    useEffect(() => {
+        let mediator = mediateRequestSalesInfo(requestSalesInfoDataSignal);
+        return mediator.destroy;
+    }, []);
+
     return (
         <Router history={ navHistory }>
             <Switch>
+                <Redirect exact from={ROUTES.ROOT} to={ROUTES.LOGIN} />
                 <Route path={ROUTES.LOGIN}>
                     <LoginComponent />
                 </Route>
@@ -84,9 +94,6 @@ const NavigationComponent = () => {
                 </Route>
                 <Route path={ROUTES.EXAMPLE_GRID}>
                     <DefaultLayout component={ExampleGridComponent}/>
-                </Route>
-                <Route path={ROUTES.EXAMPLE_TREE}>
-                    <DefaultLayout component={ExampleTreeComponent}/>
                 </Route>
             </Switch>
         </Router>

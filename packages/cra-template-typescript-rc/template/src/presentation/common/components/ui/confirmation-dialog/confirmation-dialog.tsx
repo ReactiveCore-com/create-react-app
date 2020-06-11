@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactComponentElement } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createStyles, makeStyles, Box, Typography, Button, Dialog, DialogContent } from '@material-ui/core';
 import { Warning } from 'presentation/common/components/ui/icons';
 

@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation  } from 'react-router-dom';
+import React from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Breadcrumbs, Link, Typography, FormControlLabel, Avatar } from '@material-ui/core';
-import { store } from 'core/managers/state-manager';
 import { Logo, Banner, User } from './icons';
 
 const useStyles = makeStyles(theme =>
@@ -37,25 +35,7 @@ const useStyles = makeStyles(theme =>
 );
 
 const AppHeader = (props) => {
-    const [guideline, setGuideline] = useState(store.getState().guideline);
-    const history = useHistory();
-    const location = useLocation();
     const classes = useStyles({});
-
-    useEffect(() => {
-        const unsubscribe = store.subscribe(() => {
-            let state = store.getState();
-            setGuideline(state.guideline);
-        });
-
-        return () => {
-            unsubscribe();
-        };
-    }, []);
-
-    const goToGuidelineManagerClick = () => {
-        history.push('/guideline-manager');
-    };
 
     return (
         <Grid

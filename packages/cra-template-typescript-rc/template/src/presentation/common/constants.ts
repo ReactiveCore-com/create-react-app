@@ -1,10 +1,10 @@
 export const USER_MESSAGES = { }
 
 export enum ROUTES {
+  ROOT = '/',
   LOGIN = '/login',
   EXAMPLE = '/example',
-  EXAMPLE_GRID = '/example-grid',
-  EXAMPLE_TREE = '/example-tree'
+  EXAMPLE_GRID = '/example-grid'
 };
 
 export enum operatorMap {

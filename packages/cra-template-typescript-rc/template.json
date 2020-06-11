@@ -25,6 +25,7 @@
       "gojs": "^2.1.3",
       "gojs-react": "^1.0.4",
       "ramda": "^0.26.1",
+      "@robotlegsjs/signals": "^1.1.0",
       "numeral": "^2.0.6",
       "typeface-roboto": "0.0.75",
       "moment": "^2.24.0",
