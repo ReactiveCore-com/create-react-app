@@ -1,10 +1,10 @@
 {
-  "name": "react-scripts",
+  "name": "@reactivecore/react-scripts",
   "version": "3.4.1",
-  "description": "Configuration and scripts for Create React App.",
+  "description": "Configuration and scripts for Create React App for Reactive Core.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/create-react-app.git",
+    "url": "https://github.com/ReactiveCore-com/create-react-app.git",
     "directory": "packages/react-scripts"
   },
   "license": "MIT",
@@ -12,7 +12,7 @@
     "node": ">=10"
   },
   "bugs": {
-    "url": "https://github.com/facebook/create-react-app/issues"
+    "url": "https://github.com/ReactiveCore-com/create-react-app/issues"
   },
   "files": [
     "bin",
