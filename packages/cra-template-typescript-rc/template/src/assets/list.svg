@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path d="M0,7.4H5.3V2.1H0ZM1.4,3.5H3.9V6H1.4Z"/>
+    <path d="M7,2.1V7.4H24V2.1ZM22.6,6H8.4V3.5H22.6V6Z"/>
+    <path d="M0,14.3H5.3V9H0Zm1.4-3.9H3.9v2.5H1.4Z"/>
+    <path d="M7,14.3H24V9H7Zm1.4-3.9H22.6v2.5H8.4Z"/>
+    <path d="M0,21.2H5.3V15.9H0Zm1.4-3.9H3.9v2.5H1.4Z"/>
+    <path d="M7,21.2H24V15.9H7Zm1.4-3.9H22.6v2.5H8.4Z"/>
+</svg>
