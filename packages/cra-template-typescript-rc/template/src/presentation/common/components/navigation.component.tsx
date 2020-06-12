@@ -19,11 +19,11 @@ import { ROUTES } from 'presentation/common/constants';
 import { ExampleComponent } from 'presentation/example/example.component';
 import { ExampleGridComponent } from 'presentation/example/components/grid-example.component';
 import { mediateRequestSalesInfo } from 'mediator';
-import { Signal } from "@robotlegsjs/signals"; 
+import { RequestSalesInfoSignal } from "presentation/events"; 
 
 const navHistory = createBrowserHistory();
 
-let requestSalesInfoDataSignal = new Signal();
+let requestSalesInfoDataSignal = new RequestSalesInfoSignal();
 
 navHistory.listen((location, action) => {
     switch (location.pathname) {
@@ -73,6 +73,26 @@ const DefaultLayout = ({component: Component, ...rest }) => {
     );
 };
 
+const LoginLayout = ({component: Component, ...rest }) => {
+    const classes = useStyles({});
+    return (
+        <Route
+            {...rest}
+            render={matchProps => (
+                <ThemeProvider theme={RCTheme}>
+                    <Container className={classes.container} disableGutters maxWidth="xl">
+                        <Box height={1} display="flex" flexDirection="column">
+                            <Box flexGrow="1" className={classes.appContainer} display="flex">
+                                <Component {...matchProps} />
+                            </Box>
+                        </Box>
+                    </Container>
+                </ThemeProvider>
+            )}
+        />
+    );
+};
+
 
 //NOTE for auth gated routes
 //see https://reacttraining.com/react-router/web/example/auth-workflow
@@ -87,7 +107,8 @@ const NavigationComponent = () => {
             <Switch>
                 <Redirect exact from={ROUTES.ROOT} to={ROUTES.LOGIN} />
                 <Route path={ROUTES.LOGIN}>
-                    <LoginComponent />
+                    <LoginLayout component={LoginComponent}>
+                    </LoginLayout>
                 </Route>
                 <Route path={ROUTES.EXAMPLE}>
                     <DefaultLayout component={ExampleComponent}/>

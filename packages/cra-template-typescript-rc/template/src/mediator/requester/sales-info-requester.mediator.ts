@@ -1,12 +1,13 @@
 import { store } from 'core/managers/state-manager';
 import { getData } from 'core/services/example.service';
+import { EVENT_KEYS } from 'presentation/events';
 
 export const mediateRequestSalesInfo = (requestSalesInfoSignal) => {
     return ((requestSignal) => {
         const handleSignal = async (payload) => {
             let data = await getData();
             store.dispatch({
-                type : 'updateSalesInfo',
+                type : EVENT_KEYS.UPDATE_SALES_INFO,
                 payload : data
             });
         };
