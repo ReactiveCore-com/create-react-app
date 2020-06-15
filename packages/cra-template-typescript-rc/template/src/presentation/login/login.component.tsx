@@ -1,9 +1,9 @@
 import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { Logo, Banner } from 'presentation/common/components/ui/icons';
 import { IconComponent } from 'presentation/common/components/ui/icons/icon.component'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 import { Link  } from 'react-router-dom';
 
 const styles = makeStyles(theme =>
@@ -23,12 +23,6 @@ const styles = makeStyles(theme =>
       top: "50%",
       left: "50%"
     },
-    DCLoginForm: {
-      display: "flex",
-      flexDirection: "column",
-      width: "250px",
-      alignItems: "center"
-    },
     RCLogoWrapper: {
       display: 'flex',
       alignItems: 'center',
@@ -37,20 +31,12 @@ const styles = makeStyles(theme =>
         marginLeft: "15px"
       }
     },
-    //TODO: check why Mui theme not working for login page.
-    DCButton: {
-      padding: '10px 30px',
-      borderRadius: 25,
-      border: '1px solid #808080',
-      color: '#808080',
-      flexGrow: 0,
-      '& > span > span': {
-        marginRight: '15px'
-      },
-      '&:hover': {
-        color: '#FFF',
-        backgroundColor: '#808080'
-      }
+    banner : {
+        fontSize : '200px',
+        height : 'auto'
+    },
+    logo : {
+        fontSize : '50px'
     },
     ForgotPassLabel: {
       fontSize: "10px",
@@ -66,23 +52,24 @@ export const LoginComponent = props => {
   return (
     <div className={classes.root}>
       <div className={classes.RCLogoWrapper}>
-        <Logo width="50px" height="50px"/>
-        <Banner />
+        <IconComponent className={classes.logo} name="logo" viewBox="0 0 100 100"/>
+        <IconComponent className={classes.banner} name="banner" viewBox="0 0 200 30"/>
       </div>
-      <form className={classes.DCLoginForm} noValidate autoComplete="off">
-        <TextField fullWidth label="User Name" size="small" />
-        <TextField fullWidth label="Password" size="small" />
-        <br />
-        <br />
-        <Button
-          className={ classes.DCButton }
-          component={ Link }
-          to="/example"
-          variant="outlined"
-          startIcon={<IconComponent name="login" fontSize="small" />}
-        >
-          login
-        </Button>
+      <form noValidate autoComplete="off">
+        <Box width="250px" alignItems="center" display="flex" flexDirection="column">
+            <TextField InputProps={{disableUnderline:false}} fullWidth label="User Name" size="small" />
+            <TextField InputProps={{disableUnderline:false}} fullWidth label="Password" size="small" />
+            <br />
+            <br />
+            <Button
+              component={ Link }
+              to="/example"
+              variant="outlined"
+              startIcon={<IconComponent name="login" fontSize="small" />}
+            >
+              login
+            </Button>
+        </Box>
       </form>
       <span className={classes.ForgotPassLabel}>Forgot password?</span>
     </div>

@@ -1,6 +1,6 @@
 {
   "name": "@reactivecore/react-scripts",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "Configuration and scripts for Create React App for Reactive Core.",
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "scripts",
     "template",
     "template-typescript",
+    "template-typescript-rc",
     "utils"
   ],
   "bin": {

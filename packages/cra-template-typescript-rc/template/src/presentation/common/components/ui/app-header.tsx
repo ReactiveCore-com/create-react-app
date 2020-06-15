@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Breadcrumbs, Link, Typography, FormControlLabel, Avatar } from '@material-ui/core';
-import { Logo, Banner, User } from './icons';
+import { IconComponent } from 'presentation/common/components/ui/icons/icon.component'
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -18,9 +18,15 @@ const useStyles = makeStyles(theme =>
             color: 'white',
             backgroundColor: 'white',
         },
-        banner: {
-            height: '25px',
-            margin: '0 0 0 13px'
+        banner : {
+            fontSize : '200px',
+            height : 'auto'
+        },
+        user : {
+            fontSize : '48px'
+        },
+        logo : {
+            fontSize : '50px'
         },
         link: {
             lineHeight: '25px',
@@ -55,9 +61,9 @@ const AppHeader = (props) => {
                 justifyContent="flex-start"
             >
                 <Avatar className={classes.circleImage}>
-                    <Logo width="50px" height="50px"/>
+                    <IconComponent className={classes.logo} name="logo" viewBox="0 0 100 100"/>
                 </Avatar>
-                <Banner className={classes.banner} />
+                <IconComponent className={classes.banner} name="banner" viewBox="0 0 200 30"/>
             </Box>
             <Box
                 display="flex"
@@ -84,7 +90,7 @@ const AppHeader = (props) => {
                 <FormControlLabel
                     control={
                         <Avatar className={classes.circleImage}>
-                            <User width="50px" height="50px"/>
+                            <IconComponent className={classes.user} name="user" viewBox="0 0 50 50"/>
                         </Avatar>
                     }
                     labelPlacement="start"

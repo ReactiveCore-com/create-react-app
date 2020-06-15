@@ -16,7 +16,7 @@ import { Link  } from 'react-router-dom';
 import { ROUTES } from 'presentation/common/constants';
 import * as moment from 'moment';
 import * as numeral from 'numeral';
-import { Signal } from "@robotlegsjs/signals"; 
+import { RequestSalesInfoSignal } from "presentation/events"; 
 
 import { ConfirmationDialogComponent } from 'presentation/common/components/ui/confirmation-dialog/confirmation-dialog';
 import { PageTitleComponent } from 'presentation/common/components/ui/page-title';
@@ -137,7 +137,7 @@ export const ExampleGridComponent = (props) => {
     }, []);
 
     useEffect(() => {
-        let requestSalesInfoDataSignal = new Signal();
+        let requestSalesInfoDataSignal = new RequestSalesInfoSignal();
         let mediator = mediateRequestSalesInfo(requestSalesInfoDataSignal);
         requestSalesInfoDataSignal.dispatch();
         return mediator.destroy;
