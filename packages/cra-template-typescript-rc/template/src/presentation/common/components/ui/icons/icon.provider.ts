@@ -27,16 +27,16 @@ import {
     Pdf,
     Publish,
     Login,
-    Plus
-} from '.';
+    Plus,
+} from ".";
 
 const iconMap = {
-    medical:  Medical,
-    drug:  Drug,
-    provider:  Provider,
+    medical: Medical,
+    drug: Drug,
+    provider: Provider,
     patient: Patient,
     logo: Logo,
-    clear : Clear,
+    clear: Clear,
     banner: Banner,
     user: User,
     delete: Bin,
@@ -59,13 +59,15 @@ const iconMap = {
     pdf: Pdf,
     publish: Publish,
     login: Login,
-    add: Plus
+    add: Plus,
 };
 
-export const iconProvider = (key: string) => {
+const iconProvider = (key: string) => {
     const icon = iconMap[key.toLowerCase()];
     if (!key || !icon) {
-        throw `Error: Can't find icon with provided name ${key}.`
+        throw Error(`Error: Can't find icon with provided name ${key}.`);
     }
     return icon;
-}
+};
+
+export default iconProvider;

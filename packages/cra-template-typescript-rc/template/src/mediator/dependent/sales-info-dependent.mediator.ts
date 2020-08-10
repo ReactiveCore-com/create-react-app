@@ -1,14 +1,16 @@
-import { store } from 'core/managers/state-manager';
-import { EVENT_KEYS } from 'presentation/events';
+import store from "core/managers/state-manager";
+import { EventKeys } from "presentation/events";
 
-export const mediateSalesInfoDependentMediator = (setSalesInfo) => {
+const mediateSalesInfoDependentMediator = (setSalesInfo) => {
     return ((setter) => {
         setter(store.getState().salesInfo);
         return store.subscribe(() => {
-            let { salesInfo, currentAction} = store.getState();
-            if(currentAction.type === EVENT_KEYS.UPDATE_SALES_INFO) {
+            const { salesInfo, currentAction } = store.getState();
+            if (currentAction.type === EventKeys.UPDATE_SALES_INFO) {
                 setter(salesInfo);
             }
         });
     })(setSalesInfo);
 };
+
+export default mediateSalesInfoDependentMediator;

@@ -1,4 +1,4 @@
-//NOTE: app or client specific configs
-export const uiConfig = {
+// NOTE: app or client specific configs
+const uiConfig = {};
 
-};
+export default uiConfig;

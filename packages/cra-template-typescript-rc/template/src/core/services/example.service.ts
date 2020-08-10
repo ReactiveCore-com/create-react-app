@@ -1,13 +1,15 @@
-import { getHost } from 'environment';
-import { request } from './base.service';
-import { createServiceSettings } from './services-utils';
-import { rowData } from 'data/example-data';
+// import { getHost } from "environment";
+import rowData from "data/example-data";
+// import { request } from "./base.service";
+// import { createServiceSettings } from "./services-utils";
 
-export const getData = async () => {
-    //NOTE: below is the proper code
-    //const APIURL = getHost();
-    //let settings = createServiceSettings();
-    //await request(`${APIURL}/example`, settings);
-    //NOTE: fake code for exmaple
+const getData = async () => {
+    // NOTE: below is the proper code
+    // const APIURL = getHost();
+    // let settings = createServiceSettings();
+    // await request(`${APIURL}/example`, settings);
+    // NOTE: fake code for exmaple
     return Promise.resolve(rowData);
 };
+
+export default getData;

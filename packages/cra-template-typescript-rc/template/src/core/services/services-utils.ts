@@ -1,14 +1,16 @@
-export const createServiceSettings = (method = 'GET', additionalSettings = {}) => {
-    let defaultSettings = {
+const createServiceSettings = (method = "GET", additionalSettings = {}) => {
+    const defaultSettings = {
         method,
         headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
     };
 
     return {
         ...defaultSettings,
-        ...additionalSettings
+        ...additionalSettings,
     };
 };
+
+export default createServiceSettings;

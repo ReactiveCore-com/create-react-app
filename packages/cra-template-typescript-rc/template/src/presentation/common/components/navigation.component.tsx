@@ -1,61 +1,52 @@
-import React, { useEffect } from 'react';
-import {
-    Router,
-    Switch,
-    Route,
-    Redirect
-} from 'react-router-dom';
-import {
-    createStyles,
-    makeStyles,
-    ThemeProvider,
-} from '@material-ui/core/styles';
+import React, { useEffect } from "react";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
+import { createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import { createBrowserHistory } from "history";
-import { Container, Box } from '@material-ui/core';
-import { RCTheme } from 'presentation/common/themes/theme.module';
-import AppHeader from 'presentation/common/components/ui/app-header';
-import { LoginComponent } from 'presentation/login/login.component';
-import { ROUTES } from 'presentation/common/constants';
-import { ExampleComponent } from 'presentation/example/example.component';
-import { ExampleGridComponent } from 'presentation/example/components/grid-example.component';
-import { mediateRequestSalesInfo } from 'mediator';
-import { RequestSalesInfoSignal } from "presentation/events"; 
+import { Container, Box } from "@material-ui/core";
+import { RCTheme } from "presentation/common/themes/theme.module";
+import AppHeader from "presentation/common/components/ui/app-header";
+import LoginComponent from "presentation/login/login.component";
+import { ROUTES } from "presentation/common/constants";
+import ExampleComponent from "presentation/example/example.component";
+import ExampleGridComponent from "presentation/example/components/grid-example.component";
+import { mediateRequestSalesInfo } from "mediator";
+import { RequestSalesInfoSignal } from "presentation/events";
 
 const navHistory = createBrowserHistory();
 
-let requestSalesInfoDataSignal = new RequestSalesInfoSignal();
+const requestSalesInfoDataSignal = new RequestSalesInfoSignal();
 
-navHistory.listen((location, action) => {
+navHistory.listen((location) => {
     switch (location.pathname) {
-        case ROUTES.EXAMPLE_GRID: 
+        case ROUTES.EXAMPLE_GRID:
             requestSalesInfoDataSignal.dispatch();
             break;
         default:
-          break;
-      }
+            break;
+    }
 });
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles(() =>
     createStyles({
         container: {
-            background: '#f7f7f7',
-            height: '100vh',
-            border: '1px solid #EEE',
-            padding: 0
+            background: "#f7f7f7",
+            height: "100vh",
+            border: "1px solid #EEE",
+            padding: 0,
         },
         appContainer: {
             padding: 42,
-            minHeight: '0px'
-        }
-    })
+            minHeight: "0px",
+        },
+    }),
 );
 
-const DefaultLayout = ({component: Component, ...rest }) => {
+const DefaultLayout = ({ component: Component, ...rest }) => {
     const classes = useStyles({});
     return (
         <Route
             {...rest}
-            render={matchProps => (
+            render={(matchProps) => (
                 <ThemeProvider theme={RCTheme}>
                     <Container className={classes.container} disableGutters maxWidth="xl">
                         <Box height={1} display="flex" flexDirection="column">
@@ -73,12 +64,12 @@ const DefaultLayout = ({component: Component, ...rest }) => {
     );
 };
 
-const LoginLayout = ({component: Component, ...rest }) => {
+const LoginLayout = ({ component: Component, ...rest }) => {
     const classes = useStyles({});
     return (
         <Route
             {...rest}
-            render={matchProps => (
+            render={(matchProps) => (
                 <ThemeProvider theme={RCTheme}>
                     <Container className={classes.container} disableGutters maxWidth="xl">
                         <Box height={1} display="flex" flexDirection="column">
@@ -93,32 +84,30 @@ const LoginLayout = ({component: Component, ...rest }) => {
     );
 };
 
-
-//NOTE for auth gated routes
-//see https://reacttraining.com/react-router/web/example/auth-workflow
+// NOTE for auth gated routes
+// see https://reacttraining.com/react-router/web/example/auth-workflow
 const NavigationComponent = () => {
     useEffect(() => {
-        let mediator = mediateRequestSalesInfo(requestSalesInfoDataSignal);
+        const mediator = mediateRequestSalesInfo(requestSalesInfoDataSignal);
         return mediator.destroy;
     }, []);
 
     return (
-        <Router history={ navHistory }>
+        <Router history={navHistory}>
             <Switch>
                 <Redirect exact from={ROUTES.ROOT} to={ROUTES.LOGIN} />
                 <Route path={ROUTES.LOGIN}>
-                    <LoginLayout component={LoginComponent}>
-                    </LoginLayout>
+                    <LoginLayout component={LoginComponent} />
                 </Route>
                 <Route path={ROUTES.EXAMPLE}>
-                    <DefaultLayout component={ExampleComponent}/>
+                    <DefaultLayout component={ExampleComponent} />
                 </Route>
                 <Route path={ROUTES.EXAMPLE_GRID}>
-                    <DefaultLayout component={ExampleGridComponent}/>
+                    <DefaultLayout component={ExampleGridComponent} />
                 </Route>
             </Switch>
         </Router>
-    )
+    );
 };
 
 export default NavigationComponent;

@@ -1,8 +1,8 @@
-import * as R from 'ramda';
+import * as R from "ramda";
 
-export const pipe = R.pipe;
-export const tap = R.tap;
-export const compose = R.compose;
-export const curry = R.curry;
-export const curryN = R.curryN;
-export const head = R.head;
+export const { pipe } = R;
+export const { tap } = R;
+export const { compose } = R;
+export const { curry } = R;
+export const { curryN } = R;
+export const { head } = R;

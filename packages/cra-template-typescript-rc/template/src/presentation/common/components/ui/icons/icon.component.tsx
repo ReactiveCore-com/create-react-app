@@ -1,10 +1,11 @@
-import React from 'react';
-import { SvgIcon } from '@material-ui/core';
-import { iconProvider } from './icon.provider';
+import React from "react";
+import { SvgIcon } from "@material-ui/core";
+import iconProvider from "./icon.provider";
 
-export const IconComponent = props => {
-    const icon = iconProvider(props.name);
-    return (
-        <SvgIcon component={icon} {...props} />
-    );
+const IconComponent = (props) => {
+    const { name } = props;
+    const icon = iconProvider(name);
+    return <SvgIcon component={icon} {...props} />;
 };
+
+export default IconComponent;

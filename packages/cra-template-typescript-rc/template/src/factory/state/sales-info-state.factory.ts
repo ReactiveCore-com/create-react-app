@@ -1,5 +1,5 @@
-export const createDefaultState = (state = null, action) => {
-     return state; 
+export const createDefaultState = (state = null) => {
+    return state;
 };
 
 export const createSalesInfoState = (state, action) => {

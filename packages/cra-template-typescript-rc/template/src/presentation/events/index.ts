@@ -1,11 +1,7 @@
-import { Signal } from "@robotlegsjs/signals"; 
+import { Signal } from "@robotlegsjs/signals";
 
-export enum EVENT_KEYS {
-    UPDATE_SALES_INFO = 'updateSalesInfo'
-};
+export enum EventKeys {
+    UPDATE_SALES_INFO = "updateSalesInfo",
+}
 
-export class RequestSalesInfoSignal extends Signal {
-    constructor() {
-        super()
-    }
-};
+export class RequestSalesInfoSignal extends Signal {}

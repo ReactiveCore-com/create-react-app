@@ -1,11 +1,12 @@
 const environment = {
-    host : ''
-}
+    host: "",
+};
 
 export const getHost = () => {
     return environment.host;
-}
+};
 
 export const setHost = (host) => {
-    return environment.host = host;
-}
+    environment.host = host;
+    return environment.host;
+};
