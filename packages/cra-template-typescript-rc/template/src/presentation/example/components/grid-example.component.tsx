@@ -1,4 +1,3 @@
-// import React, { useState } from "react";
 import React, { useState, useEffect } from "react";
 import {
     ModuleRegistry,
@@ -163,7 +162,6 @@ const ExampleGridComponent = () => {
 
     const gridOptions: any = {
         defaultColDef: {
-            // cellRenderer : 'pathCellRenderer',
             headerClass: classes.gridHeader,
             sortable: true,
             filter: true,
