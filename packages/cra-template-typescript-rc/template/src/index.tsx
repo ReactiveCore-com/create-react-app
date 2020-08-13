@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import App from "./App";
+import App from "presentation/App";
 
 const host = process.env.REACT_APP_DEV_SERVER;
-console.log(host);
 
 ReactDOM.render(<App host={host} />, document.getElementById("root"));
 

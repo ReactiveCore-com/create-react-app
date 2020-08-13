@@ -19,10 +19,10 @@ import * as numeral from "numeral";
 
 import { ROUTES } from "presentation/common/constants";
 import IconComponent from "presentation/common/components/ui/icons/icon.component";
-import ConfirmationDialogComponent from "presentation/common/components/ui/confirmation-dialog/confirmation-dialog";
 import PageTitleComponent from "presentation/common/components/ui/page-title";
 import { RequestSalesInfoSignal } from "presentation/events";
 import { mediateSalesInfoDependentMediator, mediateRequestSalesInfo } from "mediator";
+import { ModalDialogComponent } from 'presentation/common/components/ui/modal';
 
 // NOTE:make sure you have a license for your specific application
 LicenseManager.setLicenseKey(
@@ -229,7 +229,7 @@ const ExampleGridComponent = () => {
                         publish
                     </Button>
                 </Box>
-                <ConfirmationDialogComponent
+                <ModalDialogComponent
                     open={confirmationDialogOpen}
                     onCancel={handleConfirmationDialogCancel}
                     onOk={handleConfirmationDialogOk}

@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";
@@ -86,7 +87,7 @@ const LoginLayout = ({ component: Component, ...rest }) => {
 
 // NOTE for auth gated routes
 // see https://reacttraining.com/react-router/web/example/auth-workflow
-const NavigationComponent = () => {
+const RoutesComponent = () => {
     useEffect(() => {
         const mediator = mediateRequestSalesInfo(requestSalesInfoDataSignal);
         return mediator.destroy;
@@ -110,4 +111,4 @@ const NavigationComponent = () => {
     );
 };
 
-export default NavigationComponent;
+export default RoutesComponent;

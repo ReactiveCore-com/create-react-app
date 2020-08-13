@@ -1,13 +1,20 @@
-const request = async (url, settings) => {
+import createServiceSettings from './services-utils';
+
+const request = async (url, settings = {}) => {
+    let mergedSettings = {
+        ...createServiceSettings(),
+        ...settings
+    };
     let response;
     try {
-        response = await fetch(url, settings);
-        const result = response.json();
+        response = await fetch(url, mergedSettings);
         if (!response.ok) {
-            throw result;
+            throw response;
         }
+        const result = await response.json();
+        return result;
     } catch (err) {
-        console.error(err);
+        throw err;
     }
 };
 
