@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";

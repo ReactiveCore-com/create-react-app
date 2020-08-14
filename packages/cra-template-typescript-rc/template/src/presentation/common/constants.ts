@@ -7,7 +7,7 @@ export enum ROUTES {
     EXAMPLE_GRID = "/example-grid",
 }
 
-export enum OperatorMap {
+export enum OPERATOR_MAP {
     ">" = "greater than",
     "<" = "less than",
     ">=" = "greater than or equal to",

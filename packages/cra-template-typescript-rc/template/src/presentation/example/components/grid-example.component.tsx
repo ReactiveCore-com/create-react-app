@@ -22,7 +22,7 @@ import IconComponent from "presentation/common/components/ui/icons/icon.componen
 import PageTitleComponent from "presentation/common/components/ui/page-title";
 import { RequestSalesInfoSignal } from "presentation/events";
 import { mediateSalesInfoDependentMediator, mediateRequestSalesInfo } from "mediator";
-import { ModalDialogComponent } from 'presentation/common/components/ui/modal';
+import { ModalDialogComponent } from "presentation/common/components/ui/modal";
 
 // NOTE:make sure you have a license for your specific application
 LicenseManager.setLicenseKey(

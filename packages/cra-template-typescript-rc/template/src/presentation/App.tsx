@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
-import RoutesComponent from "./App.routes";
 import { setHost } from "environment";
+import RoutesComponent from "./App.routes";
 import "typeface-roboto";
 
 const App = (props) => {
