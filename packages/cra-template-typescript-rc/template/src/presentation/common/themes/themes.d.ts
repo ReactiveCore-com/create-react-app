@@ -14,22 +14,22 @@ type OverridesPalette = {
 
 type ColorPalette = {
     color?:
-        | "initial"
-        | "inherit"
-        | "primary"
-        | "secondary"
-        | "textPrimary"
-        | "textSecondary"
-        | "drug"
-        | "patient"
-        | "error";
+        | 'initial'
+        | 'inherit'
+        | 'primary'
+        | 'secondary'
+        | 'textPrimary'
+        | 'textSecondary'
+        | 'drug'
+        | 'patient'
+        | 'error';
 };
 
-declare module "@material-ui/core/styles/overrides" {
+declare module '@material-ui/core/styles/overrides' {
     export interface ComponentNameToClassKey extends overridesNameToClassKey {}
 }
 
-declare module "@material-ui/core/styles/createPalette" {
+declare module '@material-ui/core/styles/createPalette' {
     export interface PaletteOptions extends overridesPalette {}
     export interface Palette extends overridesPalette {}
 }

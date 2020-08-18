@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
-import clsx from "clsx";
-import { createStyles, makeStyles, Box, Button, Dialog, DialogContent, DialogActions } from "@material-ui/core";
-import { Warning } from "presentation/common/components/ui/icons";
+import React, { useState, useEffect } from 'react';
+import clsx from 'clsx';
+import { createStyles, makeStyles, Box, Button, Dialog, DialogContent, DialogActions } from '@material-ui/core';
+import { Warning } from 'presentation/common/components/ui/icons';
 
 const dialogStyles = makeStyles(() =>
     createStyles({
         content: {
             padding: 50,
             minWidth: 300,
-            textAlign: "center",
+            textAlign: 'center',
         },
         icon: {
-            marginBottom: "40px",
-            marginTop: "20px",
+            marginBottom: '40px',
+            marginTop: '20px',
         },
         message: {
-            fontSize: "24px",
+            fontSize: '24px',
             maxWidth: 300,
             fontWeight: 500,
         },
         notification: {},
         confirmation: {},
         error: {
-            fontSize: "20px",
+            fontSize: '20px',
             maxWidth: 425,
         },
         warning: {},
         actions: {
-            justifyContent: "center",
+            justifyContent: 'center',
             paddingBottom: 40,
-            "& > button": {
+            '& > button': {
                 minWidth: 90,
             },
         },
@@ -66,7 +66,7 @@ const DialogContentComponent = (props) => {
 
     return (
         <DialogContent className={classes.content}>
-            {Icon !== null && <Icon width="40" height="40" className={classes.icon} />}
+            {Icon !== null && <Icon width='40' height='40' className={classes.icon} />}
             <Box
                 className={clsx({
                     [classes.message]: true,
@@ -86,8 +86,8 @@ export const ModalDialogComponent = (props) => {
     const { open, message, type, onOk, onCancel } = props;
     const [isOpen, setIsOpen] = useState(false);
     const [notification, setNotification] = useState(message);
-    const hasOkBtn = typeof onOk === "function";
-    const hasCancelBtn = typeof onCancel === "function";
+    const hasOkBtn = typeof onOk === 'function';
+    const hasCancelBtn = typeof onCancel === 'function';
     const classes = dialogStyles({});
 
     const handleCancelBtnClick = () => {
@@ -108,16 +108,16 @@ export const ModalDialogComponent = (props) => {
     }, [open, message]);
 
     return (
-        <Dialog open={isOpen} disableBackdropClick maxWidth="md">
+        <Dialog open={isOpen} disableBackdropClick maxWidth='md'>
             <DialogContentComponent type={type} message={notification} />
             <DialogActions className={classes.actions}>
                 {hasCancelBtn && (
-                    <Button onClick={handleCancelBtnClick} size="small" variant="outlined">
+                    <Button onClick={handleCancelBtnClick} size='small' variant='outlined'>
                         cancel
                     </Button>
                 )}
                 {hasOkBtn && (
-                    <Button onClick={handleOkBtnClick} size="small" variant="outlined">
+                    <Button onClick={handleOkBtnClick} size='small' variant='outlined'>
                         ok
                     </Button>
                 )}

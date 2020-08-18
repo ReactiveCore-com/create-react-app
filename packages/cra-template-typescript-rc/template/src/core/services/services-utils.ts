@@ -1,9 +1,9 @@
-const createServiceSettings = (method = "GET", additionalSettings = {}) => {
+const createServiceSettings = (method = 'GET', additionalSettings = {}) => {
     const defaultSettings = {
         method,
         headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
         },
     };
 

@@ -28,7 +28,7 @@ import {
     Publish,
     Login,
     Plus,
-} from ".";
+} from '.';
 
 const iconMap = {
     medical: Medical,

@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment';
 
 export const isValidInput = (value) => {
     return (!Number.isNaN(value) && value > 0) || value.length === 0;
@@ -9,7 +9,7 @@ export const isValidAlphanumerics = (value) => {
 };
 
 export const isValidDate = (date) => {
-    return moment(date, "MM/DD/YYYY", true).isValid();
+    return moment(date, 'MM/DD/YYYY', true).isValid();
 };
 
 export const isValidInteger = (value) => {

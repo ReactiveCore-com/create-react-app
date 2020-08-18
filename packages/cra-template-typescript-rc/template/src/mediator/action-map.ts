@@ -1,4 +1,4 @@
-import * as SalesInfoStateFactory from "factory/state/sales-info-state.factory";
+import * as SalesInfoStateFactory from 'factory/state/sales-info-state.factory';
 
 const salesInfoActionMap = {
     updateSalesInfo: SalesInfoStateFactory.createSalesInfoState,

@@ -1,4 +1,4 @@
-import * as R from "ramda";
+import * as R from 'ramda';
 
 export const { groupBy } = R;
 export const { chain } = R;

@@ -1,5 +1,5 @@
 // import { getHost } from "environment";
-import rowData from "data/example-data";
+import rowData from 'data/example-data';
 // import { request } from "./base.service";
 // import { createServiceSettings } from "./services-utils";
 

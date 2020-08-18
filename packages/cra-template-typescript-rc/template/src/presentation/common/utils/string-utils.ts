@@ -1,5 +1,5 @@
 export const getLabel = (val) => {
-    return val.replace(/_/g, " ");
+    return val.replace(/_/g, ' ');
 };
 
 export const trimToLength = (str: string, n: number = 50) => {

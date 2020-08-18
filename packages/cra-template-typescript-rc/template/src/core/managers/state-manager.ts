@@ -1,8 +1,8 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import logger from "redux-logger";
-import updateState from "core/utils/state-utils";
-import salesInfoActionMap from "mediator/requester/action-map";
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import updateState from 'core/utils/state-utils';
+import salesInfoActionMap from 'mediator/requester/action-map';
 
 const someGlobalStateFactory = (state) => {
     return state;

@@ -1,5 +1,5 @@
-import store from "core/managers/state-manager";
-import { EVENT_KEYS } from "presentation/events";
+import store from 'core/managers/state-manager';
+import { EVENT_KEYS } from 'presentation/events';
 
 const mediateSalesInfoDependentMediator = (setSalesInfo) => {
     return ((setter) => {

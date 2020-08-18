@@ -1,4 +1,4 @@
-import createServiceSettings from "./services-utils";
+import createServiceSettings from './services-utils';
 
 const request = async (url, settings = {}) => {
     const mergedSettings = {

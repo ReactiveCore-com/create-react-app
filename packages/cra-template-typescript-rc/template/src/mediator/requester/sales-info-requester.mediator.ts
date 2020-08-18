@@ -1,6 +1,6 @@
-import store from "core/managers/state-manager";
-import getData from "core/services/example.service";
-import { EVENT_KEYS } from "presentation/events";
+import store from 'core/managers/state-manager';
+import getData from 'core/services/example.service';
+import { EVENT_KEYS } from 'presentation/events';
 
 const mediateRequestSalesInfo = (requestSalesInfoSignal) => {
     return ((requestSignal) => {
