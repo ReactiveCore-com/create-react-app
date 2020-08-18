@@ -11,6 +11,7 @@ module.exports = {
         'no-useless-catch': 0,
         'default-case': 0,
         'react/destructuring-assignment': 0,
+        'max-classes-per-file': 0,
         '@typescript-eslint/naming-convention': [
             'error',
             {
