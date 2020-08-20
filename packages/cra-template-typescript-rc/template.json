@@ -54,9 +54,9 @@
       "typescript": "^3.9.7"
     },
     "scripts": {
-      "format": "npx prettier --write src/**/*.{js,jsx,ts,tsx} && npx prettier --write *.{js,jsx,ts,tsx,json}",
-      "lint": "eslint --fix **/*.{js,jsx,ts,tsx}",
-      "lint-list": "eslint **/*.{js,jsx,ts,tsx}"
+      "format": "npx prettier --write 'src/**/*.{js,jsx,ts,tsx}' && npx prettier --write '*.{js,jsx,ts,tsx,json}'",
+      "lint": "eslint --fix '**/*.{js,jsx,ts,tsx}'",
+      "lint-list": "eslint '**/*.{js,jsx,ts,tsx}'"
     }
   }
 }
